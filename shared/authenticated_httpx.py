@@ -47,7 +47,7 @@ def create_authenticated_client(
                         credentials
                     )
                     id_token = self.session.credentials.token
-                except DefaultCredentialsError:
+                except (DefaultCredentialsError, TypeError):
                     self.outside_cloud = True
                 if not id_token:
                     # Local run, fetching authenticated user's identity token
